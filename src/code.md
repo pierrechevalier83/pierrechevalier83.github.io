@@ -1,8 +1,8 @@
 ## Code
 
-Like speech, code is the expression of ideas.
-Like speech, code can trigger actions.
-Like speech, code can be beautiful.
+Like speech, code is the expression of ideas.<br/>
+Like speech, code can trigger actions.<br/>
+Like speech, code can be beautiful.<br/>
 Like speech, code must be free.
 
 Because code **is** speech.
