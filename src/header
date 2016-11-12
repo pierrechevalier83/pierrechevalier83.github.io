@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/style.css">
+<title>%title</title>
+</head>
+<body>
+<h1><a id="title" href='/index.html'>Pierrec's Tech</a></h1>
+<div id='navbar'>
+<a href="/code.html">Code</a> | 
+<a href="/learning.html">Learning</a> | 
+<a href="/hardware.html">Hardware</a>
+</div>

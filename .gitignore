@@ -1,1 +1,4 @@
+*.html
 *.swp
+src/articles.md
+/articles

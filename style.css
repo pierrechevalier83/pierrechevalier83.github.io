@@ -20,8 +20,11 @@ a:hover {
 }
 h1, h2 {
 	line-height: 1.2;
-   text-align: center;
+    text-align: center;
+}
+div {
+    text-align: center;
 }
 strong {
-   color: #268bd2;
+    color: #268bd2;
 }

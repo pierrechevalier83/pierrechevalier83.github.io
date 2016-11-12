@@ -1,0 +1,3 @@
+## The suckless philosophy
+
+Placeholder
