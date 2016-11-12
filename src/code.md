@@ -1,12 +1,18 @@
 ## Code
 
-Coding can be the most freeing experience there is.
+Like speech, code is the expression of ideas.
+Like speech, code can trigger actions.
+Like speech, code can be beautiful.
+Like speech, code must be free.
 
-This piece of web will try to organize my views on
+Because code **is** speech.
 
 ### Philosophy
 
+[//]: #TODO: Open Source
+[//]: #TODO: KISS
 - [The suckless philosophy](articles/code/suckless.html)
+[//]: #TODO: MotherFuckingWebsites
 
 ### Software I love using
 
