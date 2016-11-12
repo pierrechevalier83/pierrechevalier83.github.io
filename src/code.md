@@ -9,25 +9,25 @@ Because code **is** speech.
 
 ### Philosophy
 
-[//]: #TODO: Open Source
-[//]: #TODO: KISS
+- Free/Libre/Open Source
+- KISS
 - [The suckless philosophy](articles/code/suckless.html)
-[//]: #TODO: MotherFuckingWebsites
+- MotherFuckingWebsites
 
 ### Software I love using
 
-[//]: #TODO: Linux
-[//]: #TODO: Arch Linux
-[//]: #TODO: git
-[//]: #TODO: dwm
-[//]: #TODO: st
-[//]: #TODO: vim
+- Linux
+- Arch Linux
+- Git
+- Dwm
+- St
+- Vim
 
 ### Code Craftmanship
 
-[//]: #TODO: modern C++
-[//]: #TODO: rust
-[//]: #TODO: Clean Code
-[//]: #TODO: type safety
+- Modern C++
+- Rust
+- Clean Code
+- Type safety
 
 
