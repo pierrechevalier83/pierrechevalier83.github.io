@@ -28,3 +28,22 @@ div {
 strong {
     color: #268bd2;
 }
+blockquote {
+	background: #eee8d5;
+	color: #073642;
+	border-left: 10px solid #2aa198;
+	margin: 1.5em 10px;
+	padding: 0.5em 10px;
+	quotes: "\201C""\201D";
+}
+blockquote:before {
+	color: #2aa198;
+	content: open-quote;
+	font-size: 4em;
+	line-height: 0.1em;
+	margin-right: 0.25em;
+	vertical-align: -0.4em;
+}
+blockquote p {
+	display: inline;
+}
