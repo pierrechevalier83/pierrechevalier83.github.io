@@ -12,12 +12,11 @@ code {
 }
 a {
 	border-bottom: 0;
-	color: #839496;
+	color: #268bd2;
 	text-decoration: none;
 }
 a:hover {
-	color: #268bd2;
-	border-bottom: 1px solid;
+	border-bottom: 1px solid #839496;
 }
 h1, h2 {
 	line-height: 1.2;
