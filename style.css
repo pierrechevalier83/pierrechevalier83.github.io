@@ -11,12 +11,13 @@ code {
 	background: white;
 }
 a {
-	border-bottom: 1px solid #444444;
-	color: #444444;
+	border-bottom: 0;
+	color: #839496;
 	text-decoration: none;
 }
 a:hover {
-	border-bottom: 0;
+	color: #268bd2;
+	border-bottom: 1px solid;
 }
 h1, h2 {
 	line-height: 1.2;
@@ -26,6 +27,9 @@ div {
     text-align: center;
 }
 strong {
+    color: #dc322f;
+}
+#navbar {
     color: #268bd2;
 }
 blockquote {
