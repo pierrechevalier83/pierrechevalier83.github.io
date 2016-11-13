@@ -22,7 +22,7 @@ Each one of these projects is written in no more than a few thousands of lines o
 Each one of them **works**.
 
 One may think the suckless developers cannot possibly provide software that satisfies everyone's requirements with these self-imposed constraints.<br/>
-Here is the beauty of it: the code is so simple and frugal that anyone can extend it to include the features they need. In the spirit of open-source code, developers are then invited to contribute their modifications in the form of patches for used by the other members of the community.
+Here is the beauty of it: the code is so simple and frugal that anyone can extend it to include the features they need. In the spirit of open-source code, developers are then invited to contribute their modifications in the form of patches for use by the other members of the community.
 
 With a few hours of customization, the suckless tools can morphe from a perfectly usable system to the system that best meets your individual needs.
 
