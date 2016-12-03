@@ -1,7 +1,7 @@
 # Website
 Mirror of [my website](https://pierrec.tech).
 
-Pages are written in markdown. Shout out to [japanoise](https://github.com/japanoise/website) from which I stole the idea and the scripts.
+Pages are written in markdown. Shout out to [japanoise](https://github.com/japanoise/website) from whom I stole the idea and the scripts.
 
 # Dependencies
 - tidy-html5
