@@ -5,9 +5,11 @@
 ### Old-style for loops
 
 Working on any large C++ codebase that predates C++11, one is bound to find a number of old style loops:
+
     for (size_t i=0; i < v.size(); i++) {
         ...
     }
+
 or variations thereof.
 
 This code is **ugly**.
@@ -17,29 +19,34 @@ This code is **ugly**.
 - It forces you to duplicate the information of the index type
 
 There are a few clean ways to tackle this issue:
-By decreasing oreder of preference (ymmv)
+By decreasing order of preference (ymmv):
+
 - use the appropriate algoritm:
   When you boil down a loop to its essentials, it is very likely to be duplicating a standard algorithm. Use the real thing instead!
-- range `for_each`
-
+- range `for_each`<br/>
+```
     boost::for_each(v, [] (const auto& x) {
         ...
     });
-- range `for`
-
+```
+- range `for`<br/>
+```
     for (const auto& x : v) {
         ...
     }
-- old style `for_each`
-
+```
+- old style `for_each`<br/>
+```
     std::for_each(v.begin(), v.end(), [] (const auto& x) {
         ...
     });
-
+```
 If we were to push the refactoring enough, all loops should be replaced with one of these forms. On new code, an old style for loop should be considered a code smell.
+
 That being said, one has to be practical:
 In a large ancient codebase, the amount of effort to make clean loops emerge from arcane cruft will probably be too costly.
-Here is the guideline I would advocate for:
+
+Here are the guidelines I would advocate for:
 - replace any trivial loop (where the index was only used for indexing in one array) with one of the above
 - for the other ones, use consistent sane indexing
 
@@ -51,7 +58,9 @@ If you write this code consistently:
     for (int i = 0; i < v.size(); ++i) { // bad: sign-compare warning
         ...
     }
+
 you will end up with so many sign-compare warnings that you will not be practically able to gain any benefit from them.
+
 As all warnings, sign-compare should be made to fail the build so that the compiler can save you from burning yourself alive when the occasional mistake happens.
 
 ### Use the right type
@@ -95,6 +104,7 @@ Based on the previous requirements, we could do:
     for (int i = 0; i < static_cast<int>(v.size()); i++) {
         ...
     }
+
 It uses the correct type and doesn't trigger warnings.
 
 There are two issues with it though:
