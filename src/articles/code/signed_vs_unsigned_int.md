@@ -13,7 +13,8 @@ for (size_t i=0; i < v.size(); i++) {
 ~~~
 or variations thereof.
 
-This code is **ugly**.
+This code is **ugly**.<br/>
+
 - It uses the wrong type for indexing (see the argument below)
 - It has a performance issue: it evaluates v.size() at every iteration
 - It declares a variable (i) that is probably as good as unused
@@ -53,6 +54,7 @@ That being said, one has to be practical:
 In a large ancient codebase, the amount of effort to make clean loops emerge from arcane cruft will probably be too costly.
 
 Here are the guidelines I would advocate for:
+
 - replace any trivial loop (where the index was only used for indexing in one array) with one of the above
 - for the other ones, use consistent sane indexing
 
