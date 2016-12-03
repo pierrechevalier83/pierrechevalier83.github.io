@@ -27,6 +27,7 @@ By decreasing order of preference (ymmv):
 - range `for_each`<br/>
 
 ~~~ C++
+#include <boost/range/algorithm/for_each.hpp>
 boost::for_each(v, [] (const auto& x) {
     ...
 });
@@ -41,6 +42,7 @@ for (const auto& x : v) {
 - old style `for_each`<br/>
 
 ~~~ C++
+#include <algorithm>
 std::for_each(v.begin(), v.end(), [] (const auto& x) {
     ...
 });
@@ -121,11 +123,12 @@ There are two issues with it though:
 
 Here is an alternative, adapted from [this stack overflow thread](http://stackoverflow.com/questions/7443222/how-do-i-deal-with-signed-unsigned-mismatch-warnings-c4018):
 
+Place this code in a "sane_size.h" header file:
+
 ~~~ C++
 #include <cassert>
 #include <cstddef>
 #include <limits>
-
 // When using int loop indices, use sane_size(container) instead of
 // container.size() in order to document the inherent assumption that the size
 // of the container can be represented by an int.
@@ -141,6 +144,7 @@ constexpr SaneSizeType sane_size(const ContainerType &c) {
 You can now refactor your old crufty loops to look as follows:
 
 ~~~ C++
+#include "sane_size.h"
 for (int i = 0; i < sane_size(v); ++i) {
     ...
 }
