@@ -5,11 +5,9 @@
 ### Old-style for loops
 
 Working on any large C++ codebase that predates C++11, one is bound to find a number of old style loops:
-```
-for (size_t i=0; i < v.size(); i++) {
-    ...
-}
-```
+    for (size_t i=0; i < v.size(); i++) {
+        ...
+    }
 or variations thereof.
 
 This code is **ugly**.
@@ -23,23 +21,20 @@ By decreasing oreder of preference (ymmv)
 - use the appropriate algoritm:
   When you boil down a loop to its essentials, it is very likely to be duplicating a standard algorithm. Use the real thing instead!
 - range `for_each`
-```
-boost::for_each(v, [] (const auto& x) {
-    ...
-});
-```
+
+    boost::for_each(v, [] (const auto& x) {
+        ...
+    });
 - range `for`
-```
-for (const auto& x : v) {
-   ...
-}
-```
+
+    for (const auto& x : v) {
+        ...
+    }
 - old style `for_each`
-```
-std::for_each(v.begin(), v.end(), [] (const auto& x) {
-    ...
-});
-```
+
+    std::for_each(v.begin(), v.end(), [] (const auto& x) {
+        ...
+    });
 
 If we were to push the refactoring enough, all loops should be replaced with one of these forms. On new code, an old style for loop should be considered a code smell.
 That being said, one has to be practical:
@@ -52,11 +47,10 @@ Here is the guideline I would advocate for:
 
 Before all: use a consistent index:
 If you write this code consistently:
-```
-for (int i = 0; i < v.size(); ++i) { // bad: sign-compare warning
-    ...
-}
-```
+
+    for (int i = 0; i < v.size(); ++i) { // bad: sign-compare warning
+        ...
+    }
 you will end up with so many sign-compare warnings that you will not be practically able to gain any benefit from them.
 As all warnings, sign-compare should be made to fail the build so that the compiler can save you from burning yourself alive when the occasional mistake happens.
 
@@ -79,12 +73,10 @@ Actually using an unsigned type for the size of containers is a design mistake o
 
 (of course assuming the size of the vector is not changing during the iteration). This has the advantage of avoiding the traps that are a consequence of `unsigned` `size_t` design mistake. For example:
 
-// draw lines connecting the dots
-```
-for (size_t i = 0; i < pts.size() - 1; i++) {
-    drawLine(pts[i], pts[i+1]);
-}
-```
+    // draw lines connecting the dots
+    for (size_t i = 0; i < pts.size() - 1; i++) {
+        drawLine(pts[i], pts[i+1]);
+    }
 
 the code above will have problems if the pts vector is empty because pts.size()-1 is a huge nonsense number in that case. Dealing with expressions where a < b-1 is not the same as a+1 < b even for commonly used values is like dancing in a minefield.
 
@@ -99,11 +91,10 @@ Unsigned values are the ideal type when you need the modulo arithmetic property 
 So how do we deal with indexing in an old style for loop?
 
 Based on the previous requirements, we could do:
-```
-for (int i = 0; i < static_cast<int>(v.size()); i++) {
-...
-}
-```
+
+    for (int i = 0; i < static_cast<int>(v.size()); i++) {
+        ...
+    }
 It uses the correct type and doesn't trigger warnings.
 
 There are two issues with it though:
@@ -111,33 +102,30 @@ There are two issues with it though:
 - It looks ugly and you wouldn't want to have this cluttering your code base
 
 Here is an alternative, adapted from [this stack overflow thread](http://stackoverflow.com/questions/7443222/how-do-i-deal-with-signed-unsigned-mismatch-warnings-c4018):
-```
-#include <cassert>
-#include <cstddef>
-#include <limits>
 
-// When using int loop indices, use sane_size(container) instead of
-// container.size() in order to document the inherent assumption that the size
-// of the container can be represented by an int.
-// If int is too small, use sane_size<int64_t>(container).
-template <typename SaneSizeType = int, typename ContainerType>
-constexpr SaneSizeType sane_size(const ContainerType &c) {
-    const auto size = c.size();  // if no auto, use `typename ContainerType::size_type`
-    assert(size <= static_cast<decltype(size)>(std::numeric_limits<SaneSizeType>::max()));
-    return static_cast<SaneSizeType>(size);
-}
-```
+    #include <cassert>
+    #include <cstddef>
+    #include <limits>
+
+    // When using int loop indices, use sane_size(container) instead of
+    // container.size() in order to document the inherent assumption that the size
+    // of the container can be represented by an int.
+    // If int is too small, use sane_size<int64_t>(container).
+    template <typename SaneSizeType = int, typename ContainerType>
+    constexpr SaneSizeType sane_size(const ContainerType &c) {
+        const auto size = c.size();  // if no auto, use `typename ContainerType::size_type`
+        assert(size <= static_cast<decltype(size)>(std::numeric_limits<SaneSizeType>::max()));
+        return static_cast<SaneSizeType>(size);
+    }
 
 You can now refactor your old crufty loops to look as follows:
-```
-for (int i = 0; i < sane_size(v); ++i) {
-   ...
-}
-```
+
+    for (int i = 0; i < sane_size(v); ++i) {
+        ...
+    }
 
 or for very large containers:
-```
-for (int64_t i = 0; i < sane_size<int64_t>(v); ++i) {
-   ...
-}
-```
+
+    for (int64_t i = 0; i < sane_size<int64_t>(v); ++i) {
+       ...
+    }
