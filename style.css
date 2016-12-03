@@ -8,7 +8,9 @@ body {
 	max-width: 73%;
 }
 code {
-	background: white;
+	background: #eee8d5;
+	color: #073642;
+	padding: 0.5em 0px;
 }
 a {
 	border-bottom: 0;
