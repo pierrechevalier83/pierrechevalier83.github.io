@@ -81,6 +81,7 @@ Using int is more correct from a logical point of view for indexing an array.
 unsigned semantic in C and C++ doesn't really mean "not negative" but it's more like "bitmask" or "modulo integer".
 
 To understand why unsigned is not a good type for a "non-negative" number please consider
+
 - Adding an integer to a non-negative integer you get a non-negative integer
 - The difference of two non-negative integers is always a non-negative integer
 - Multiplying a non-negative integer by a negative integer you get a non-negative result
@@ -120,6 +121,7 @@ for (int i = 0; i < static_cast<int>(v.size()); i++) {
 It uses the correct type and doesn't trigger warnings.
 
 There are two issues with it though:
+
 - It triggers undefined behaviour if v.size() is between the max signed and the max unsigned value
 - It looks ugly and you wouldn't want to have this cluttering your code base
 
